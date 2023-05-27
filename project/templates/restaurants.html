@@ -14,7 +14,7 @@
 			<h1>Restaurants</h1>
 		</div>
 	</div>
-	
+	{% if type != 'customer' %}
 	<div class="row padding-top padding-bottom">
 		<div class="col-md-1"></div>
 		<div class="col-md-10 padding-none">
@@ -26,6 +26,7 @@
 		</div>
 		<div class="col-md-1"></div>
 	</div>
+	{% endif %}
 	{% for restaurant in restaurants %}
 		<a href = "{{url_for('main.showMenu', restaurant_id = restaurant.id)}}">
 			<div class="row">

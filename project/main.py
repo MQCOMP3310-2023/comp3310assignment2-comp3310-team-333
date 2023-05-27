@@ -58,11 +58,12 @@ def deleteRestaurant(restaurant_id):
 #Show a restaurant menu
 @main.route('/restaurant/<int:restaurant_id>/')
 @main.route('/restaurant/<int:restaurant_id>/menu/')
+@login_required
 def showMenu(restaurant_id):
     restaurant = db.session.query(Restaurant).filter_by(id = restaurant_id).one()
     user = db.session.query(User).filter_by(id = restaurant.user_id).one()
     items = db.session.query(MenuItem).filter_by(restaurant_id = restaurant_id).all()
-    return render_template('menu.html', items = items, restaurant = restaurant, creater_name = user.name)
+    return render_template('menu.html', items = items, restaurant = restaurant, creater_name = user.name, user_name = current_user.name)
      
 
 
