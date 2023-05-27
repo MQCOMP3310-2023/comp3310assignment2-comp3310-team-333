@@ -1,22 +1,28 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-from .models import Restaurant, MenuItem
+from flask_login import login_required, current_user
+from .models import Restaurant, MenuItem, User
 from sqlalchemy import asc
 from . import db
 
 main = Blueprint('main', __name__)
 
-#Show all restaurants
 @main.route('/')
+def index():
+   return render_template('main.html')
+
+#Show all restaurants
 @main.route('/restaurant/')
+@login_required
 def showRestaurants():
   restaurants = db.session.query(Restaurant).order_by(asc(Restaurant.name))
-  return render_template('restaurants.html', restaurants = restaurants)
+  return render_template('restaurants.html', restaurants = restaurants, type = current_user.user_type)
 
 #Create a new restaurant
 @main.route('/restaurant/new/', methods=['GET','POST'])
+@login_required
 def newRestaurant():
   if request.method == 'POST':
-      newRestaurant = Restaurant(name = request.form['name'])
+      newRestaurant = Restaurant(name = request.form['name'], user_id = current_user.id)
       db.session.add(newRestaurant)
       flash('New Restaurant %s Successfully Created' % newRestaurant.name)
       db.session.commit()
@@ -54,8 +60,9 @@ def deleteRestaurant(restaurant_id):
 @main.route('/restaurant/<int:restaurant_id>/menu/')
 def showMenu(restaurant_id):
     restaurant = db.session.query(Restaurant).filter_by(id = restaurant_id).one()
+    user = db.session.query(User).filter_by(id = restaurant.user_id).one()
     items = db.session.query(MenuItem).filter_by(restaurant_id = restaurant_id).all()
-    return render_template('menu.html', items = items, restaurant = restaurant)
+    return render_template('menu.html', items = items, restaurant = restaurant, creater_name = user.name)
      
 
 

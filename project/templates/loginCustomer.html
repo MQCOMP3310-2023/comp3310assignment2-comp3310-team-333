@@ -1,0 +1,32 @@
+<div class = 'flash'>
+    {% with messages = get_flashed_messages() %}
+       {% if messages %}
+         <ul>
+         {% for message in messages %}
+             <li> <strong> {{ message }} </strong> </li>
+         {% endfor %}
+         </ul>
+         {% endif %}
+     {% endwith %}
+ </div>
+
+<form method="POST" action="/customer">
+    <div class="field">
+        <div class="control">
+            <input class="input is-large" type="email" name="email" placeholder="Your Email" autofocus="">
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+            <input class="input is-large" type="password" name="password" placeholder="Your Password">
+        </div>
+    </div>
+    <div class="field">
+        <label class="checkbox">
+            <input type="checkbox" name="remember">
+            Remember me
+        </label>
+    </div>
+    <button class="button is-block is-info is-large is-fullwidth">Login</button>
+</form>
