@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_required, current_user
 from .models import Restaurant, MenuItem, User
-from sqlalchemy import asc
+from sqlalchemy import asc, text
 from . import db
 
 main = Blueprint('main', __name__)
@@ -23,7 +23,8 @@ def showRestaurants():
 def newRestaurant():
     if current_user.user_type != 'customer':
         if request.method == 'POST':
-            newRestaurant = Restaurant(name = request.form['name'], user_id = current_user.id)
+            safe_name = text(request.form['name'])
+            newRestaurant = Restaurant(name = str(safe_name), user_id = current_user.id)
             db.session.add(newRestaurant)
             flash('New Restaurant %s Successfully Created' % newRestaurant.name)
             db.session.commit()
@@ -41,8 +42,11 @@ def editRestaurant(restaurant_id):
         editedRestaurant = db.session.query(Restaurant).filter_by(id = restaurant_id).one()
         if request.method == 'POST':
             if request.form['name']:
-                editedRestaurant.name = request.form['name']
+                safe_name = request.form['name']
+                editedRestaurant.name = str(safe_name)
                 flash('Restaurant Successfully Edited %s' % editedRestaurant.name)
+                db.session.add(editedRestaurant)
+                db.session.commit() 
                 return redirect(url_for('main.showRestaurants'))
         else:
             return render_template('editRestaurant.html', restaurant = editedRestaurant)
@@ -85,7 +89,9 @@ def newMenuItem(restaurant_id):
     restaurant = db.session.query(Restaurant).filter_by(id = restaurant_id).one()
     if current_user.name == 'Admin' or current_user.id == restaurant.user_id:
         if request.method == 'POST':
-            newItem = MenuItem(name = request.form['name'], description = request.form['description'], price = request.form['price'], course = request.form['course'], restaurant_id = restaurant_id)
+            safe_name = text(request.form['name'])
+            safe_desc = text(request.form['description'])
+            newItem = MenuItem(name = str(safe_name), description = str(safe_desc), price = request.form['price'], course = request.form['course'], restaurant_id = restaurant_id)
             db.session.add(newItem)
             db.session.commit()
             flash('New Menu %s Item Successfully Created' % (newItem.name))
@@ -104,9 +110,11 @@ def editMenuItem(restaurant_id, menu_id):
     if current_user.name == 'Admin' or current_user.id == restaurant.user_id:
         if request.method == 'POST':
             if request.form['name']:
-                editedItem.name = request.form['name']
+                safe_name = text(request.form['name'])
+                editedItem.name = str(safe_name)
             if request.form['description']:
-                editedItem.description = request.form['description']
+                safe_desc = text(request.form['description'])
+                editedItem.description = str(safe_desc)
             if request.form['price']:
                 editedItem.price = request.form['price']
             if request.form['course']:
