@@ -1,8 +1,16 @@
-<div>
-    <a href="{{url_for('auth.login_customer')}}">
-        <button>Customer Login</button>
-    </a>
-    <a href="{{url_for('auth.login_owner')}}">
-        <button>Restaurant Owner Login</button>
-    </a>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+
+<div class="center">
+    <div class="users">
+        <img class="user-image" src="https://static.vecteezy.com/system/resources/previews/002/506/023/original/avatar-male-man-portrait-cartoon-character-line-and-fill-style-icon-free-vector.jpg"/>
+        <a href="{{url_for('auth.login_customer')}}">
+            <button>Customer Login</button>
+        </a>
+    </div>
+    <div class="users">
+        <img class="user-image owner" src="https://scalebranding.com/wp-content/uploads/2021/11/351.jpg"/>
+        <a href="{{url_for('auth.login_owner')}}">
+            <button>Restaurant Owner Login</button>
+        </a>
+    </div>
 </div>

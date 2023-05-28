@@ -15,7 +15,7 @@ def index():
 @login_required
 def showRestaurants():
   restaurants = db.session.query(Restaurant).order_by(asc(Restaurant.name))
-  return render_template('restaurants.html', restaurants = restaurants, type = current_user.user_type)
+  return render_template('restaurants.html', restaurants = restaurants, type = current_user.user_type, name = current_user.name)
 
 #Create a new restaurant
 @main.route('/restaurant/new/', methods=['GET','POST'])

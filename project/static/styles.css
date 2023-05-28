@@ -1,6 +1,8 @@
 * {
 	font-family: "Helvetica Neue Bold", Roboto, Helvetica, Arial, sans-serif;
 	font-weight: 700;
+	margin: 0;
+	padding: 0;
 }
 
 h1 {
@@ -160,4 +162,115 @@ u }
 	list-style-type: none;
 	text-align: center;
 
+}
+
+.name {
+	position: relative;
+	float: left;
+}
+
+/* Login style */
+.login_buttons {
+	margin-top: 300px;
+}
+
+button {
+	background-color: #007bff;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	font-size: 16px;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+  }
+  
+button:hover {
+background-color: #0056b3;
+}
+
+/* Login form style*/
+.login_form {
+	max-width: 400px;
+	margin: 0 auto;
+	padding: 20px;
+	margin-top: 150px;
+}
+
+.login_form .field {
+margin-bottom: 20px;
+}
+
+.login_form .control {
+position: relative;
+}
+
+.login_form .input {
+width: 100%;
+padding: 10px;
+font-size: 16px;
+border: 1px solid #ccc;
+border-radius: 4px;
+}
+
+.login_form .checkbox {
+display: block;
+margin-bottom: 10px;
+}
+
+.login_form .button {
+width: 100%;
+padding: 10px;
+font-size: 18px;
+background-color: #007bff;
+color: #fff;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+}
+
+.login_form .button:hover {
+background-color: #0056b3;
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 50px;
+}
+
+.users {
+display: flex;
+flex-direction: column;
+align-items: center;
+margin: 40px 30px;
+border-radius: 8px;
+overflow: hidden;
+}
+
+.user-image {
+width: 100px;
+height: 100px;
+object-fit: cover;
+z-index: -1;
+}
+
+.users:hover .user-image {
+transform: scale(1.1);
+}
+
+.button {
+padding: 10px 20px;
+font-size: 16px;
+}
+
+.users a {
+text-decoration: none;
+color: inherit;
+}
+
+.owner {
+scale: 1.5;
 }
