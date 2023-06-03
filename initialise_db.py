@@ -17,35 +17,35 @@ def populate_db():
     print("Items have cleaned")
 
     # Adding admin
-    admin = User(email = "admin@admin.com", name = "Admin", password = "1234", user_type = "admin")
+    admin = User(email = "admin@admin.com", name = "Admin", password = "pbkdf2:sha256:260000$4YnAGKlmL59wugu9$56f2b0fef76b458489bbc43f2e1c4de2ac16de7c1254b36fe15b0d8a256fdb55", user_type = "admin")
     session.add(admin)
     session.commit()
 
     print("Admin has added")
     
     # Adding restaurant owenr
-    user1 = User(email = "jhon@gmail.com", name = "Jhon", password = "1234", user_type = "res_owner")
+    user1 = User(email = "jhon@gmail.com", name = "Jhon", password = "pbkdf2:sha256:260000$4YnAGKlmL59wugu9$56f2b0fef76b458489bbc43f2e1c4de2ac16de7c1254b36fe15b0d8a256fdb55", user_type = "res_owner")
     session.add(user1)
     session.commit()
 
-    user2 = User(email = "ab@gmail.com", name = "Jhon_AB", password = "1234", user_type = "res_owner")
+    user2 = User(email = "ab@gmail.com", name = "Jhon_AB", password = "pbkdf2:sha256:260000$4YnAGKlmL59wugu9$56f2b0fef76b458489bbc43f2e1c4de2ac16de7c1254b36fe15b0d8a256fdb55", user_type = "res_owner")
     session.add(user2)
     session.commit()
 
-    user3 = User(email = "ac@gmail.com", name = "Jhon_AC", password = "1234", user_type = "res_owner")
+    user3 = User(email = "ac@gmail.com", name = "Jhon_AC", password = "pbkdf2:sha256:260000$4YnAGKlmL59wugu9$56f2b0fef76b458489bbc43f2e1c4de2ac16de7c1254b36fe15b0d8a256fdb55", user_type = "res_owner")
     session.add(user3)
     session.commit()
 
-    user4 = User(email = "ad@gmail.com", name = "Jhon_AD", password = "1234", user_type = "res_owner")
+    user4 = User(email = "ad@gmail.com", name = "Jhon_AD", password = "pbkdf2:sha256:260000$4YnAGKlmL59wugu9$56f2b0fef76b458489bbc43f2e1c4de2ac16de7c1254b36fe15b0d8a256fdb55", user_type = "res_owner")
     session.add(user4)
     session.commit()
 
     # Adding customer
-    user5 = User(email = "smith@gmail.com", name = "Smith", password = "1234", user_type = "customer")
+    user5 = User(email = "smith@gmail.com", name = "Smith", password = "pbkdf2:sha256:260000$4YnAGKlmL59wugu9$56f2b0fef76b458489bbc43f2e1c4de2ac16de7c1254b36fe15b0d8a256fdb55", user_type = "customer")
     session.add(user5)
     session.commit()
 
-    user6 = User(email = "a@gmail.com", name = "Smith_A", password = "1234", user_type = "customer")
+    user6 = User(email = "a@gmail.com", name = "Smith_A", password = "pbkdf2:sha256:260000$4YnAGKlmL59wugu9$56f2b0fef76b458489bbc43f2e1c4de2ac16de7c1254b36fe15b0d8a256fdb55", user_type = "customer")
     session.add(user6)
     session.commit()
 

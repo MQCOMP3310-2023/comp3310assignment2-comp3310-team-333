@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_user, login_required, logout_user
+from werkzeug.security import generate_password_hash, check_password_hash
 from .models import User
 from . import db, app
 
@@ -22,12 +23,12 @@ def login_post():
     user = User.query.filter_by(email=email).first()
 
     # check if the user actually exists
-    # take the user-supplied password and compare it with the stored password
-    if not user or not (user.password == password):
+    # take the user-supplied password and compare it with the stored password hash
+    if not user or not check_password_hash(user.password, password):
         flash('Please check your login details and try again.')
         app.logger.warning("User login failed")
         return redirect(url_for('auth.login_admin')) # if the user doesn't exist or password is wrong, reload the page
-    if (user.user_type != 'admin'):
+    if user.user_type != 'admin':
         flash('You are not admin')
         return redirect(url_for('auth.login_admin'))
 
@@ -48,12 +49,12 @@ def login_owner_post():
     user = User.query.filter_by(email=email).first()
 
     # check if the user actually exists
-    # take the user-supplied password and compare it with the stored password
-    if not user or not (user.password == password):
+    # take the user-supplied password and compare it with the stored password hash
+    if not user or not check_password_hash(user.password, password):
         flash('Please check your login details and try again.')
         app.logger.warning("User login failed")
         return redirect(url_for('auth.login_owner')) # if the user doesn't exist or password is wrong, reload the page
-    if (user.user_type != 'res_owner'):
+    if user.user_type != 'res_owner':
         flash('You are not owner')
         return redirect(url_for('auth.login_owner'))
 
@@ -74,14 +75,14 @@ def login_customer_post():
     user = User.query.filter_by(email=email).first()
 
     # check if the user actually exists
-    # take the user-supplied password and compare it with the stored password
-    if not user or not (user.password == password):
+    # take the user-supplied password and compare it with the stored password hash
+    if not user or not check_password_hash(user.password, password):
         flash('Please check your login details and try again.')
         app.logger.warning("User login failed")
         return redirect(url_for('auth.login_customer')) # if the user doesn't exist or password is wrong, reload the page
     
-    #checking customer type
-    if (user.user_type != 'customer'):
+    # checking customer type
+    if user.user_type != 'customer':
         flash('You are not customer')
         app.logger.warning("User login failed")
         return redirect(url_for('auth.login_customer')) # if the user doesn't exist or password is wrong, reload the page
@@ -93,5 +94,5 @@ def login_customer_post():
 @auth.route('/logout')
 @login_required
 def logout():
-    logout_user();
+    logout_user()
     return redirect(url_for('main.showRestaurants'))
