@@ -84,7 +84,7 @@ def showMenu(restaurant_id):
 
 
 #Create a new menu item
-@main.route('/restaurant/<int:restaurant_id>/menu/new/',methods=['GET','POST'])
+@main.route('/restaurant/<int:restaurant_id>/menu/new/', methods=['GET','POST'])
 def newMenuItem(restaurant_id):
     restaurant = db.session.query(Restaurant).filter_by(id = restaurant_id).one()
     if current_user.name == 'Admin' or current_user.id == restaurant.user_id:
@@ -143,3 +143,8 @@ def deleteMenuItem(restaurant_id,menu_id):
             return render_template('deleteMenuItem.html', item = itemToDelete)
     else: 
        return redirect(url_for('main.showRestaurants'))
+    
+#Rating
+@main.route('/restuarant', methods=['GET','POST'])
+def rating():
+    return redirect(url_for('main.showRestaurants'))

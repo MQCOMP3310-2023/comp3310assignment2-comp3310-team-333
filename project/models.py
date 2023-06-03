@@ -39,7 +39,7 @@ class MenuItem(db.Model):
     price = db.Column(db.String(8))
     course = db.Column(db.String(250))
     restaurant_id = db.Column(db.Integer,db.ForeignKey('restaurant.id'))
-    restaurant = db.    relationship(Restaurant)
+    restaurant = db.relationship(Restaurant)
 
     @property
     def serialize(self):
@@ -50,4 +50,20 @@ class MenuItem(db.Model):
            'id'         : self.id,
            'price'      : self.price,
            'course'     : self.course,
+       }
+
+class rates(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    user_id = db.Column(db.Integer)
+    res_id = db.Column(db.Integer, db.ForeignKey('restaurant.id'))
+    restaurant = db.relationship(Restaurant)
+    rating = db.Column(db.Integer)
+
+    @property
+    def serialize(self):
+       """Return object data in easily serializeable format"""
+       return {
+           'user'       : self.user_id,
+           'restaurant' : self.res_id,
+           'rating'     : self.rating
        }

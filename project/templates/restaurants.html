@@ -28,14 +28,27 @@
 	</div>
 	{% endif %}
 	{% for restaurant in restaurants %}
-		<a href = "{{url_for('main.showMenu', restaurant_id = restaurant.id)}}">
+		
 			<div class="row">
 				<div class="col-md-1"></div>
 					<div class="col-md-10 restaurant-list">
-						<h3>{{restaurant.name}}</h3>
+						<a href = "{{url_for('main.showMenu', restaurant_id = restaurant.id)}}">
+						<h3>{{restaurant.name}}</h3></a>
+						<p class="rates">Rating: {{rate}}</p>
+						<form action="{{url_for('main.rating')}}" method="POST">
+							<label for="rating">Rate:</label>
+							<select name="rating" id="rating">
+								<option value="1">1 Star</option>
+								<option value="2">2 Stars</option>
+								<option value="3">3 Stars</option>
+								<option value="4">4 Stars</option>
+								<option value="5">5 Stars</option>
+							</select>
+							<input type="submit" value="Submit Rating">
+						</form>
 					</div>
 				<div class="col-md-1"></div>
 			</div>
-		</a>
+		
 	{% endfor %}
 {% endblock %}
