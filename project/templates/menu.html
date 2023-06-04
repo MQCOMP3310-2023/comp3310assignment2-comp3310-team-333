@@ -13,6 +13,7 @@
 			</figure>
 		</h1>
 		<div class="rate_wrapper">
+			<!-- Wrapper used for Star ratings, hidden hides element from non customer users -->
 			<div class="rating_wrapper {% if current_user.user_type != 'customer' %}hidden{% endif %}">
 				<p>Rate: </p>
 				<form action="{{ url_for('main.rating',restaurant_id=restaurant.id)}}" method="post">

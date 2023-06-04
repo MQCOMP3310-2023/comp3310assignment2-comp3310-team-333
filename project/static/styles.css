@@ -350,12 +350,13 @@ button:hover {
 	top: -9999px;
 }
 
+/* Colours star buttons on hover and buttons behind hovered star */
 .rating_stars:not(:checked)>label:hover,
 .rating_stars:not(:checked)>label:hover~label:before {
 	color: orange;
 	transform: scale(1.3);
 }
-
+/* Make star button colour persist when checked */
 .rating_stars>input:checked~label::before {
 	color: orange;
 	transform: scale(1.3);
