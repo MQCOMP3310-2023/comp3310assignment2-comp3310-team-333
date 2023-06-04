@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_required, current_user
-from .models import Restaurant, MenuItem, User
-from sqlalchemy import asc, text
+from .models import Restaurant, MenuItem, User, rates
+from sqlalchemy import asc, text, exc
 from . import db
 
 main = Blueprint('main', __name__)
@@ -71,15 +71,20 @@ def deleteRestaurant(restaurant_id):
     else: 
        return redirect(url_for('main.showRestaurants'))   
 
-#Show a restaurant menu
+#Shows restaurant menu
+#Shows restaurant rating
 @main.route('/restaurant/<int:restaurant_id>/')
 @main.route('/restaurant/<int:restaurant_id>/menu/')
 @login_required
 def showMenu(restaurant_id):
     restaurant = db.session.query(Restaurant).filter_by(id = restaurant_id).one()
+
+    ratings =  db.session.query(rates).filter_by(res_id=restaurant_id).all()
+    rating = round(sum([rating.rating for rating in ratings])/len(ratings), 1) if ratings else 0
+
     user = db.session.query(User).filter_by(id = restaurant.user_id).one()
     items = db.session.query(MenuItem).filter_by(restaurant_id = restaurant_id).all()
-    return render_template('menu.html', items = items, restaurant = restaurant, creater_name = user.name, user_name = current_user.name)
+    return render_template('menu.html', items = items, restaurant = restaurant, creater_name = user.name, user_name = current_user.name, rate=rating)
      
 
 
@@ -144,7 +149,18 @@ def deleteMenuItem(restaurant_id,menu_id):
     else: 
        return redirect(url_for('main.showRestaurants'))
     
-#Rating
-@main.route('/restuarant', methods=['GET','POST'])
-def rating():
-    return redirect(url_for('main.showRestaurants'))
+#Posts ratings
+@main.route('/restaurant/<int:restaurant_id>/rate', methods=['POST'])
+def rating(restaurant_id):
+    if current_user.user_type == "customer":
+        try:
+            user = db.session.query(rates).filter_by(user_id=current_user.id, res_id=restaurant_id).one()
+        except exc.NoResultFound:
+            new_rating = rates(user_id=current_user.id, res_id=restaurant_id, rating=request.form['star'])
+            db.session.add(new_rating)
+        else:
+            user.rating = request.form['star']
+        finally:
+            db.session.commit()
+
+    return redirect(url_for('main.showMenu', restaurant_id = restaurant_id))

@@ -24,66 +24,80 @@ h3 {
 	color: #4A4A4A;
 	line-height: 23px;
 }
- p {
- 	font-family: "Helvetica Neue", Roboto, Helvetica, Arial, sans-serif;
- 	font-size: 16px;
- 	color: #7B7573;
- 	line-height: 24px;
- 	font-weight: 400;
- }
 
- strong {
- 	font-size: 16px;
- 	color: #7B7573;
- 	line-height: 24px;
- }
+p {
+	font-family: "Helvetica Neue", Roboto, Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	color: #7B7573;
+	line-height: 24px;
+	font-weight: 400;
+}
 
- a {
- 	font-size: 14px;
- 	color: #0093B9;
- 	line-height: 17px;
- }
+strong {
+	font-size: 16px;
+	color: #7B7573;
+	line-height: 24px;
+}
+
+a {
+	font-size: 14px;
+	color: #0093B9;
+	line-height: 17px;
+}
+
 .padding-top {
 	padding-top: 30px;
 }
+
 .padding-bottom {
 	padding-bottom: 30px;
 }
+
 .margin-right {
 	margin-right: 30px;
 }
+
 .padding-none {
 	padding: 0;
 }
+
 .btn {
 	padding: 20px;
 	margin: 0;
 	border-color: #9FB80A;
 	border-width: 2px;
-	color: #9FB80A;;
+	color: #9FB80A;
+	;
 }
+
 .btn:hover {
 	border-color: #9FB80A;
 }
+
 .btn.delete {
 	border-color: #aaaaaa;
 	color: #aaaaaa;
 }
+
 .btn.delete:hover {
 	border-color: #aaaaaa;
 	color: red;
 }
+
 .glyphicon {
 	margin-right: 10px;
 }
+
 .top-menu {
 	padding-top: 30px;
 	padding-bottom: 30px;
 }
+
 .top-menu p {
 	margin-bottom: 0;
 	line-height: 16px;
 }
+
 .top-menu a {
 	margin-bottom: 0;
 	line-height: 16px;
@@ -91,15 +105,19 @@ h3 {
 	color: #7B7573;
 	font-weight: 400;
 }
+
 .divider {
 	height: 15px;
 }
+
 .divider.blue {
 	background-color: #42C3C9;
 }
+
 .divider.green {
 	background-color: #9FB80A;
 }
+
 .banner.main {
 	height: 150px;
 	background: url("/static/top-banner.jpg");
@@ -107,53 +125,64 @@ h3 {
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+
 .banner.menu {
 	height: 150px;
 	background-color: #E1E17F;
 }
+
 .banner.profile {
 	height: 150px;
 	background-color: #A6E8EB;
 }
+
 .banner h1 {
 	margin: 45px 0;
 }
- .restaurant-list {
- 	background-color: #F0F0F0;
- 	padding: 20px;
- }
- .restaurant-list:hover {
- 	background-color: #e1e17f;
- 	padding: 20px;
+
+.restaurant-list {
+	background-color: #F0F0F0;
+	padding: 20px;
 }
+
+.restaurant-list:hover {
+	background-color: #e1e17f;
+	padding: 20px;
+}
+
 .menu-item {
 	background: #F0F0F0;
 	padding: 20px;
 	margin: 20px;
 	margin-left: -20px;
 }
+
 .menu-price {
 	font-weight: 700;
 }
+
 .creator {
 	padding-right: 20px;
 	margin-top: -20px;
 	text-align: right;
-	float:right;
+	float: right;
 }
+
 .creator img {
 	width: 100px;
 	border-radius: 50%;
 }
+
 .creator figcaption {
 	font-size: 14px;
 	color: #7B7573;
 	font-weight: 400;
 	margin-top: -20px;
 }
+
 .flash {
 	background-color: #98FB98;
-	width:100%;
+	width: 100%;
 	text-decoration: none;
 
 }
@@ -184,10 +213,10 @@ button {
 	text-align: center;
 	text-decoration: none;
 	cursor: pointer;
-  }
-  
+}
+
 button:hover {
-background-color: #0056b3;
+	background-color: #0056b3;
 }
 
 /* Login form style*/
@@ -199,39 +228,39 @@ background-color: #0056b3;
 }
 
 .login_form .field {
-margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .login_form .control {
-position: relative;
+	position: relative;
 }
 
 .login_form .input {
-width: 100%;
-padding: 10px;
-font-size: 16px;
-border: 1px solid #ccc;
-border-radius: 4px;
+	width: 100%;
+	padding: 10px;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
 }
 
 .login_form .checkbox {
-display: block;
-margin-bottom: 10px;
+	display: block;
+	margin-bottom: 10px;
 }
 
 .login_form .button {
-width: 100%;
-padding: 10px;
-font-size: 18px;
-background-color: #007bff;
-color: #fff;
-border: none;
-border-radius: 4px;
-cursor: pointer;
+	width: 100%;
+	padding: 10px;
+	font-size: 18px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
 }
 
 .login_form .button:hover {
-background-color: #0056b3;
+	background-color: #0056b3;
 }
 
 .center {
@@ -240,47 +269,94 @@ background-color: #0056b3;
 	justify-content: center;
 	align-items: center;
 	margin-top: 50px;
-	
+
 }
 
 .users {
-display: flex;
-flex-direction: column;
-align-items: center;
-margin: 150px 30px;
-border-radius: 8px;
-overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 150px 30px;
+	border-radius: 8px;
+	overflow: hidden;
 }
 
 .user-image {
-width: 100px;
-height: 100px;
-object-fit: cover;
-z-index: -1;
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+	z-index: -1;
 }
 
 .users:hover .user-image {
-transform: scale(1.1);
+	transform: scale(1.1);
 }
 
 .button {
-padding: 10px 20px;
-font-size: 16px;
+	padding: 10px 20px;
+	font-size: 16px;
 }
 
 .users a {
-text-decoration: none;
-color: inherit;
+	text-decoration: none;
+	color: inherit;
 }
 
 .owner {
-scale: 1.5;
+	scale: 1.5;
 }
 
 .center {
 	margin: 0 auto;
 }
 
-.rates {
-	float: right;
+
+
+.rate_wrapper,
+.rating_wrapper {
+	display: flex;
+}
+
+.rate_wrapper {
+	justify-content: space-between;
+}
+
+
+.rating_stars {
+	display: flex;
+	margin-left: 4px;
+	flex-direction: row-reverse;
+}
+
+/* Make labels into stars */
+.rating_stars:not(:checked)>label::before {
+	content: "\2605";
+
+}
+
+/* Move all the labels to the right of the stars collectively */
+.rating_stars:not(:checked)>label {
+	cursor: pointer;
+	float: left;
+	padding: 2px;
+	font-size: 16px;
+	transition: color .2s, transform .3s;
+	color: grey
+}
+
+/* Push radio buttons off screen */
+.rating_stars:not(:checked)>input[type="radio"] {
+	position: absolute;
+	top: -9999px;
+}
+
+.rating_stars:not(:checked)>label:hover,
+.rating_stars:not(:checked)>label:hover~label:before {
+	color: orange;
+	transform: scale(1.3);
+}
+
+.rating_stars>input:checked~label::before {
+	color: orange;
+	transform: scale(1.3);
 }
